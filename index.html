@@ -203,28 +203,54 @@ nav{
 
 /* STATS BAR */
 .stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--rim);border-radius:var(--r2);
-  overflow:hidden;background:var(--surface);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--rim);
+  border-radius:var(--r2);
+  overflow:hidden;
+  background:var(--surface);
   margin-bottom:2rem;
-  box-shadow:0 0 30px rgba(200,168,75,.04);
+  box-shadow:0 0 30px rgba(200,168,75,.06);
 }
 .stat{
-  padding:.9rem .75rem;text-align:center;
-  border-right:1px solid var(--rim);position:relative;
+  padding:0;
+  text-align:center;
+  border-right:1px solid var(--rim);
+  position:relative;
+  height:90px;
+  display:table-cell;
+  vertical-align:middle;
 }
 .stat:last-child{border-right:none;}
 .stat::before{
-  content:'';position:absolute;top:0;left:20%;right:20%;height:1px;
+  content:'';position:absolute;top:0;left:15%;right:15%;height:1px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.5;
+  opacity:.6;
+}
+.stat-inner{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:90px;gap:5px;padding:.5rem;
 }
 .stat-n{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:1.8rem;color:var(--gold2);
-  display:block;line-height:1;margin-bottom:4px;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;
+  font-size:2rem;
+  color:var(--gold2);
+  line-height:1;
+  white-space:nowrap;
+  display:block;
+  letter-spacing:-.02em;
+  font-variant-numeric:lining-nums tabular-nums;
 }
-.stat-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);}
+.stat-l{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mist);
+  line-height:1;
+  display:block;
+}
 
 /* TYPES */
 .section-kicker{
@@ -538,7 +564,7 @@ nav{
 /* ── RESPONSIVE ────────────────────────────────── */
 @media(max-width:400px){
   .hook{font-size:2.6rem;}
-  .stat-n{font-size:1.55rem;}
+  .stat-n{font-size:1.65rem;}
   .q-body{font-size:1.4rem;}
   .res-type{font-size:1.8rem;}
 }
@@ -589,18 +615,24 @@ nav{
       Answer 6 questions — our AI identifies your exact blind spot and tells you precisely how to fix it.
     </p>
 
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-n" id="s1">4,847</span>
-        <span class="stat-l">Analyzed</span>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem">
+        <div class="stat-inner">
+          <div class="stat-n" id="s1">4,847+</div>
+          <div class="stat-l">Traders analyzed</div>
+        </div>
       </div>
-      <div class="stat">
-        <span class="stat-n">2 min</span>
-        <span class="stat-l">To complete</span>
+      <div class="stat" role="listitem">
+        <div class="stat-inner">
+          <div class="stat-n">2 min</div>
+          <div class="stat-l">To complete</div>
+        </div>
       </div>
-      <div class="stat">
-        <span class="stat-n" id="s3">Free</span>
-        <span class="stat-l">Always</span>
+      <div class="stat" role="listitem">
+        <div class="stat-inner">
+          <div class="stat-n" id="s3">100%</div>
+          <div class="stat-l">Free forever</div>
+        </div>
       </div>
     </div>
 
@@ -886,7 +918,7 @@ function nextQ(){
 }
 
 /* ── API CALL ───────────────────────────── */
-const API_KEY='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';
+const API_KEY='YOUR_API_KEY_HERE';
 
 async function analyze(){
   show('s-analyzing');
