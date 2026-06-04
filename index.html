@@ -4,894 +4,316 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Thomas Circle — Private Capital Network</title>
-<meta name="description" content="You weren't meant to trade alone. Find out what's holding you back — and claim your spot inside the circle."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/></noscript>
 <style>
-/* ── DESIGN TOKENS ─────────────────────────────── */
-:root{
-  --void:#06101e;
-  --abyss:#081428;
-  --deep:#0b1a30;
-  --navy:#0e2040;
-  --surface:#122550;
-  --card:#152a58;
-  --card2:#183060;
-  --rim:#224070;
-  --rim2:#2e5090;
-  --silver:#8ba5c8;
-  --silver2:#a8c0d8;
-  --chrome:#c8d8e8;
-  --gold:#c8a84b;
-  --gold2:#e0bc60;
-  --gold3:#f0d080;
-  --gold-dim:rgba(200,168,75,.14);
-  --gold-glow:rgba(200,168,75,.28);
-  --cream:#eef3fc;
-  --mist:#7090b8;
-  --smoke:#3a5070;
-  --star:rgba(210,228,255,.95);
-  --emerald:#10b981;
-  --aurora1:rgba(30,80,200,.22);
-  --aurora2:rgba(60,40,160,.15);
-  --aurora3:rgba(20,110,180,.18);
-  --nebula:rgba(200,168,75,.09);
-  --r:8px;--r2:12px;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{-webkit-font-smoothing:antialiased}
 body{
-  background:linear-gradient(160deg,#081428 0%,#06101e 40%,#0a1830 70%,#081428 100%);
-  color:var(--cream);
-  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
   min-height:100vh;
-  overflow-x:hidden;
+  background:#07111f;
+  color:#e8eef8;
+  font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
+  padding:0 1.25rem 4rem;
+  position:relative;overflow-x:hidden;
 }
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%,rgba(20,70,180,.38) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 40% at 85% 85%,rgba(200,168,75,.09) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 15% 75%,rgba(40,30,120,.22) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 12%,rgba(200,220,255,.85) 0%,transparent 100%),
+    radial-gradient(1px 1px at 22% 28%,rgba(200,220,255,.6) 0%,transparent 100%),
+    radial-gradient(2px 2px at 18% 8%,rgba(200,220,255,.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 38% 18%,rgba(200,220,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 52% 6%,rgba(200,220,255,.75) 0%,transparent 100%),
+    radial-gradient(1px 1px at 68% 14%,rgba(200,220,255,.8) 0%,transparent 100%),
+    radial-gradient(2px 2px at 82% 5%,rgba(200,220,255,.65) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 22%,rgba(200,220,255,.45) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 12% 42%,rgba(200,220,255,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 75% 38%,rgba(200,220,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 45% 55%,rgba(200,220,255,.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 58%,rgba(200,220,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 5% 68%,rgba(200,220,255,.7) 0%,transparent 100%),
+    radial-gradient(2px 2px at 30% 75%,rgba(200,220,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 60% 82%,rgba(200,220,255,.65) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 95% 78%,rgba(200,220,255,.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 42% 92%,rgba(200,220,255,.7) 0%,transparent 100%),
+    radial-gradient(2px 2px at 72% 95%,rgba(200,220,255,.55) 0%,transparent 100%);
+}
+.wrap{position:relative;z-index:1;max-width:540px;margin:0 auto;}
 
-/* ── STAR CANVAS ───────────────────────────────── */
-#stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-
-/* ── DEEP GLOW LAYERS ──────────────────────────── */
-.g1,.g2,.g3,.g4,.g5{position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
-/* Aurora top-center — bright navy blue */
-.g1{
-  width:1100px;height:700px;
-  background:radial-gradient(ellipse,rgba(20,70,180,.32) 0%,rgba(10,40,100,.18) 40%,transparent 70%);
-  top:-300px;left:50%;transform:translateX(-50%);
-  animation:auroraFloat 12s ease-in-out infinite alternate;
-}
-/* Gold nebula bottom-right */
-.g2{
-  width:700px;height:500px;
-  background:radial-gradient(ellipse,rgba(200,168,75,.12) 0%,rgba(180,130,40,.06) 40%,transparent 70%);
-  bottom:-150px;right:-80px;
-  animation:auroraShift 15s ease-in-out infinite alternate-reverse;
-}
-/* Deep violet left */
-.g3{
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(60,40,160,.18) 0%,rgba(30,20,100,.08) 50%,transparent 70%);
-  top:25%;left:-180px;
-  animation:auroraShift 18s ease-in-out infinite alternate;
-}
-/* Bright azure center-right */
-.g4{
-  width:500px;height:400px;
-  background:radial-gradient(ellipse,rgba(20,120,200,.14) 0%,rgba(10,80,160,.06) 50%,transparent 70%);
-  top:50%;right:-100px;
-  animation:auroraShift 10s ease-in-out infinite alternate-reverse;
-}
-/* Subtle gold center pulse */
-.g5{
-  width:400px;height:300px;
-  background:radial-gradient(ellipse,rgba(200,168,75,.07) 0%,transparent 65%);
-  top:60%;left:50%;transform:translateX(-50%);
-  animation:goldPulse 8s ease-in-out infinite;
-}
-@keyframes auroraFloat{
-  0%{opacity:.8;transform:translateX(-50%) scaleX(1);}
-  50%{opacity:1;transform:translateX(-50%) scaleX(1.08);}
-  100%{opacity:.75;transform:translateX(-50%) scaleX(.95);}
-}
-@keyframes auroraShift{
-  0%{transform:translateX(-50%) scale(1);opacity:.8;}
-  50%{transform:translateX(-48%) scale(1.06);opacity:1;}
-  100%{transform:translateX(-52%) scale(.96);opacity:.75;}
-}
-@keyframes goldPulse{
-  0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}
-  50%{opacity:1;transform:translateX(-50%) scale(1.15);}
-}
-
-/* ── NOISE ─────────────────────────────────────── */
-.noise{
-  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-}
-
-/* ── LAYOUT ────────────────────────────────────── */
-.wrap{
-  position:relative;z-index:2;
-  max-width:580px;margin:0 auto;
-  padding:0 1.25rem 7rem;
-}
-
-/* ── NAV ───────────────────────────────────────── */
-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.6rem 0 2.5rem;
-}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-seal{
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0 2.5rem;}
+.brand{display:flex;align-items:center;gap:10px;}
+.seal{
   width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(145deg,#0e2040,#182a50);
   border:1px solid rgba(200,168,75,.4);
-  background:linear-gradient(145deg,var(--navy),var(--surface));
   display:grid;place-items:center;
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:15px;font-weight:600;
-  color:var(--gold);
-  box-shadow:0 0 16px rgba(200,168,75,.15),inset 0 0 12px rgba(200,168,75,.05);
+  font-size:15px;font-weight:600;color:#c8a84b;
+  font-family:Georgia,serif;
+  box-shadow:0 0 14px rgba(200,168,75,.15);
   flex-shrink:0;
 }
-.brand-name{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;
-  font-size:17px;letter-spacing:.04em;color:var(--chrome);
-  line-height:1.1;
+.brand-name{font-family:Georgia,serif;font-size:15px;color:#c8d8e8;letter-spacing:.02em;}
+.brand-sub{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#3a5070;margin-top:1px;}
+.pill{
+  display:flex;align-items:center;gap:5px;
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:#10b981;border:1px solid rgba(16,185,129,.2);
+  background:rgba(16,185,129,.05);border-radius:20px;padding:4px 11px;
 }
-.brand-sub{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);margin-top:1px;}
-.nav-badge{
-  display:flex;align-items:center;gap:6px;
-  font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--emerald);
-  border:1px solid rgba(16,185,129,.18);
-  background:rgba(16,185,129,.05);
-  border-radius:20px;padding:5px 12px;
-}
-.dot-live{width:5px;height:5px;border-radius:50%;background:var(--emerald);animation:livepulse 1.8s ease infinite;}
+.dot{width:5px;height:5px;border-radius:50%;background:#10b981;animation:blink 1.6s ease infinite;}
 
-/* ── DIVIDER ───────────────────────────────────── */
-.hr{height:1px;background:linear-gradient(90deg,transparent,var(--rim),var(--rim2),var(--rim),transparent);margin-bottom:2.5rem;opacity:.6;}
+/* INTRO */
+#s-intro{animation:up .5s ease both;}
+.kicker{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:#c8a84b;margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:8px;
+}
+.kicker::before{content:'';width:18px;height:1px;background:#c8a84b;opacity:.4;}
+h1{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(2.2rem,9vw,3.8rem);
+  line-height:1.06;font-weight:400;
+  color:#eef3fc;margin-bottom:.85rem;letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:#c8a84b;}
+.sub{font-size:15px;line-height:1.75;color:#5a7090;margin-bottom:1.75rem;font-weight:300;}
+.sub strong{color:#8ba8c8;font-weight:500;}
 
-/* ── INTRO ─────────────────────────────────────── */
-#s-intro{animation:fadeUp .7s cubic-bezier(.16,1,.3,1) both;}
-
-/* MEMBERSHIP ROW */
-.mem-row{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:1.75rem;
-}
-.mem-avatars{display:flex;}
-.mem-av{
-  width:28px;height:28px;border-radius:50%;
-  border:1.5px solid var(--void);
-  background:linear-gradient(135deg,var(--navy),var(--card2));
-  display:grid;place-items:center;
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:11px;color:var(--silver);
-  margin-right:-8px;flex-shrink:0;
-}
-.mem-av:last-child{margin-right:0;}
-.mem-text{font-size:12px;color:var(--mist);line-height:1.5;padding-left:14px;}
-.mem-text strong{color:var(--silver2);font-weight:500;}
-
-/* MAIN HOOK */
-.hook-eyebrow{
-  font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--gold);
-  margin-bottom:1.1rem;display:flex;align-items:center;gap:10px;
-}
-.hook-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);opacity:.5;}
-
-.hook{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:300;
-  font-size:clamp(2.8rem,11vw,5rem);
-  line-height:1.02;letter-spacing:-.01em;
-  color:var(--cream);margin-bottom:.75rem;
-}
-.hook em{font-style:italic;color:var(--gold2);}
-.hook strong{
-  font-weight:600;display:block;
-  background:linear-gradient(110deg,var(--chrome) 0%,var(--silver2) 40%,var(--chrome) 80%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.hook-sub{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:300;
-  font-size:clamp(1.1rem,4vw,1.35rem);
-  color:var(--silver);line-height:1.6;
-  margin-bottom:2rem;max-width:480px;
-}
-
-/* STATS BAR */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--rim);
-  border-radius:var(--r2);
-  overflow:hidden;
-  background:var(--surface);
-  margin-bottom:2rem;
-  box-shadow:0 0 30px rgba(200,168,75,.06);
-}
-.stat{
-  padding:0;
-  text-align:center;
-  border-right:1px solid var(--rim);
-  position:relative;
-  height:90px;
-  display:table-cell;
-  vertical-align:middle;
-}
-.stat:last-child{border-right:none;}
-.stat::before{
-  content:'';position:absolute;top:0;left:15%;right:15%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.6;
-}
-.stat-inner{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  height:90px;gap:5px;padding:.5rem;
-}
-.stat-n{
-  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
-  font-weight:700;
-  font-size:2rem;
-  color:var(--gold2);
-  line-height:1;
-  white-space:nowrap;
-  display:block;
-  letter-spacing:-.02em;
-  font-variant-numeric:lining-nums tabular-nums;
-}
-.stat-l{
-  font-family:'DM Mono','Courier New',monospace;
-  font-size:9px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--mist);
-  line-height:1;
-  display:block;
-}
-
-/* TYPES */
-.section-kicker{
-  font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--mist);
-  margin-bottom:.65rem;
-}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2rem;}
-.chip{
-  font-size:12px;font-weight:400;padding:5px 13px;border-radius:20px;
-  border:1px solid var(--rim);color:var(--smoke);
-  background:transparent;letter-spacing:.01em;cursor:default;
-  transition:all .3s;
-}
-.chip.lit{
-  border-color:rgba(200,168,75,.35);color:var(--gold2);
-  background:var(--gold-dim);
-}
-
-/* TESTIMONIAL */
-.testi{
-  background:var(--surface);
-  border:1px solid var(--rim);
-  border-radius:var(--r2);padding:1.35rem;
-  margin-bottom:2rem;position:relative;overflow:hidden;
-}
-.testi::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(200,168,75,.4),transparent);
-}
-.testi-bg{
-  position:absolute;right:-30px;bottom:-30px;
-  width:130px;height:130px;border-radius:50%;
-  background:radial-gradient(circle,var(--gold-dim),transparent 70%);
-  pointer-events:none;
-}
-.testi-q{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;
-  font-size:clamp(1rem,3.5vw,1.15rem);line-height:1.75;
-  color:var(--silver2);margin-bottom:1rem;
-}
-.testi-q::before{content:'\201C';font-size:2rem;color:var(--gold);line-height:0;vertical-align:-.4em;margin-right:4px;}
-.testi-foot{display:flex;align-items:center;gap:10px;}
-.testi-av{
-  width:30px;height:30px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--navy),var(--card2));
-  border:1px solid var(--rim2);
-  display:grid;place-items:center;
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:12px;color:var(--silver);
-}
-.testi-who{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--mist);letter-spacing:.04em;}
-.testi-stars{color:var(--gold);font-size:11px;margin-top:2px;letter-spacing:.1em;}
+/* PROOF */
+.proof-row{display:flex;align-items:center;gap:6px;margin-bottom:1.5rem;}
+.av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0e2040,#1a3060);border:1.5px solid #07111f;display:grid;place-items:center;font-size:9px;color:#6880a8;font-weight:600;margin-right:-7px;}
+.av:last-of-type{margin-right:0;}
+.proof-txt{font-size:12px;color:#3a5070;padding-left:12px;}
+.proof-txt strong{color:#6880a8;}
 
 /* URGENCY */
 .urgency{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(200,168,75,.05);
-  border:1px solid rgba(200,168,75,.18);
-  border-radius:var(--r);padding:.7rem 1rem;
-  margin-bottom:1.75rem;
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;color:#c8a84b;
+  background:rgba(200,168,75,.05);border:1px solid rgba(200,168,75,.18);
+  border-radius:6px;padding:.6rem 1rem;margin-bottom:1.75rem;
 }
-.urgency-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:livepulse 1.6s ease infinite;}
-.urgency-text{font-size:13px;color:var(--gold2);font-weight:400;line-height:1.5;}
-.urgency-text strong{font-weight:600;}
+.u-dot{width:5px;height:5px;border-radius:50%;background:#c8a84b;flex-shrink:0;animation:blink 1.4s ease infinite;}
 
-/* CTA */
-.btn-enter{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  width:100%;padding:17px 20px;
-  background:linear-gradient(140deg,var(--navy) 0%,var(--card2) 50%,var(--navy) 100%);
-  border:1px solid rgba(200,168,75,.4);
-  color:var(--gold2);
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;
-  font-size:1.15rem;letter-spacing:.06em;
-  border-radius:var(--r);cursor:pointer;
-  position:relative;overflow:hidden;
+/* START BTN */
+.btn-start{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:15px;
+  background:linear-gradient(145deg,#0e2040,#162a50);
+  color:#c8a84b;font-family:Georgia,serif;font-size:1rem;letter-spacing:.05em;
+  border:1px solid rgba(200,168,75,.38);border-radius:8px;cursor:pointer;
   transition:transform .15s,box-shadow .15s,border-color .2s;
-  box-shadow:0 0 30px rgba(200,168,75,.08),inset 0 1px 0 rgba(200,168,75,.1);
+  box-shadow:0 0 25px rgba(200,168,75,.07);margin-bottom:.65rem;
 }
-.btn-enter::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(200,168,75,.06),transparent);
-  transform:translateX(-100%);transition:transform .9s ease;
-}
-.btn-enter:hover{
-  transform:translateY(-2px);
-  border-color:rgba(200,168,75,.65);
-  box-shadow:0 0 50px rgba(200,168,75,.15),inset 0 1px 0 rgba(200,168,75,.15);
-}
-.btn-enter:hover::before{transform:translateX(100%);}
-.btn-enter svg{width:18px;height:18px;flex-shrink:0;opacity:.8;}
-.btn-meta{
-  text-align:center;font-family:'DM Mono','Courier New',monospace;
-  font-size:10px;color:var(--smoke);margin-top:.75rem;letter-spacing:.08em;text-transform:uppercase;
-}
+.btn-start:hover{transform:translateY(-2px);border-color:rgba(200,168,75,.6);box-shadow:0 0 40px rgba(200,168,75,.15);}
+.btn-meta{text-align:center;font-size:10px;color:#243040;letter-spacing:.06em;text-transform:uppercase;}
 
-/* ── QUIZ ──────────────────────────────────────── */
-#s-quiz{display:none;animation:fadeUp .45s cubic-bezier(.16,1,.3,1) both;}
+/* QUIZ */
+#s-quiz{display:none;animation:up .35s ease both;}
+.prog-wrap{margin-bottom:1.75rem;}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.45rem;}
+.prog-label{font-size:11px;color:#3a5070;letter-spacing:.06em;text-transform:uppercase;}
+.prog-pct{font-family:Georgia,serif;font-size:1.1rem;color:#c8a84b;}
+.prog-rail{height:2px;background:#1a3058;border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#c8a84b,#e0bc60);border-radius:2px;transition:width .5s ease;}
 
-.prog-wrap{margin-bottom:2rem;}
-.prog-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;}
-.prog-label{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;color:var(--mist);text-transform:uppercase;}
-.prog-pct{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:1.25rem;color:var(--gold2);}
-.prog-rail{height:1px;background:var(--rim);overflow:hidden;}
-.prog-bar{
-  height:100%;
-  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold3));
-  transition:width .6s cubic-bezier(.4,0,.2,1);
-}
-
-.q-num{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.q-num{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c8a84b;margin-bottom:.5rem;}
 .q-body{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:300;
-  font-size:clamp(1.5rem,6vw,2.1rem);
-  line-height:1.25;color:var(--cream);margin-bottom:1.6rem;
+  font-family:Georgia,serif;font-size:clamp(1.3rem,5vw,1.75rem);
+  line-height:1.3;color:#eef3fc;margin-bottom:1.4rem;font-weight:400;
 }
-
-.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:1.6rem;}
+.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;}
 .opt{
-  display:flex;align-items:flex-start;gap:13px;
-  padding:13px 16px;
-  border:1px solid var(--rim);border-radius:var(--r);
-  background:var(--surface);color:var(--silver);
-  font-size:14px;line-height:1.6;font-weight:400;
-  cursor:pointer;text-align:left;
-  transition:border-color .15s,background .15s,transform .12s;
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 15px;border:1px solid #1a3058;border-radius:8px;
+  background:#0c1828;color:#8ba8c8;
+  font-size:14px;line-height:1.55;cursor:pointer;text-align:left;
+  transition:border-color .15s,background .15s,transform .1s;
   position:relative;
 }
-.opt::after{
-  content:'';position:absolute;left:0;top:10%;bottom:10%;width:2px;
-  background:linear-gradient(180deg,var(--gold),var(--gold2));
+.opt::before{
+  content:'';position:absolute;left:0;top:12%;bottom:12%;width:2px;
+  background:linear-gradient(180deg,#c8a84b,#e0bc60);
   border-radius:0 1px 1px 0;transform:scaleY(0);transition:transform .2s;
 }
-.opt:hover{border-color:var(--rim2);background:var(--card);transform:translateX(4px);}
-.opt:hover::after{transform:scaleY(1);}
-.opt.sel{border-color:rgba(200,168,75,.4);background:var(--gold-dim);}
-.opt.sel::after{transform:scaleY(1);}
+.opt:hover{border-color:#2a4070;background:#0f1e30;transform:translateX(3px);}
+.opt:hover::before{transform:scaleY(1);}
+.opt.sel{border-color:rgba(200,168,75,.4);background:rgba(200,168,75,.07);}
+.opt.sel::before{transform:scaleY(1);}
 .opt-k{
-  width:24px;height:24px;flex-shrink:0;
-  border:1px solid var(--rim2);border-radius:5px;
-  display:grid;place-items:center;
-  font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--mist);
-  margin-top:1px;transition:all .15s;letter-spacing:.02em;
+  width:22px;height:22px;flex-shrink:0;border:1px solid #2a4070;
+  border-radius:5px;display:grid;place-items:center;
+  font-size:10px;font-weight:600;color:#3a5070;margin-top:1px;
+  transition:all .15s;font-family:system-ui,monospace;
 }
-.opt.sel .opt-k{background:var(--gold);border-color:var(--gold);color:var(--void);}
-.opt-text{flex:1;font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:14px;font-weight:300;}
+.opt.sel .opt-k{background:#c8a84b;border-color:#c8a84b;color:#07111f;}
+.opt-txt{flex:1;}
 
 .btn-next{
   width:100%;padding:14px;
-  background:transparent;color:var(--gold2);
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:1.05rem;letter-spacing:.06em;
-  border:1px solid rgba(200,168,75,.35);border-radius:var(--r);cursor:pointer;
-  transition:all .15s;
-  box-shadow:0 0 20px rgba(200,168,75,.05);
+  background:linear-gradient(145deg,#0e2040,#162a50);
+  color:#c8a84b;font-family:Georgia,serif;font-size:1rem;letter-spacing:.05em;
+  border:1px solid rgba(200,168,75,.35);border-radius:8px;cursor:pointer;
+  transition:all .15s;box-shadow:0 0 20px rgba(200,168,75,.06);
 }
 .btn-next:disabled{opacity:.2;cursor:not-allowed;box-shadow:none;}
-.btn-next:not(:disabled):hover{
-  background:var(--gold-dim);border-color:rgba(200,168,75,.6);
-  box-shadow:0 0 30px rgba(200,168,75,.1);transform:translateY(-1px);
-}
+.btn-next:not(:disabled):hover{border-color:rgba(200,168,75,.6);box-shadow:0 0 30px rgba(200,168,75,.14);transform:translateY(-1px);}
 
-/* ── ANALYZING ─────────────────────────────────── */
-#s-analyzing{display:none;text-align:center;padding:5rem 0;animation:fadeUp .4s ease both;}
-.seal-anim{position:relative;width:80px;height:80px;margin:0 auto 2rem;}
-.seal-ring{
-  position:absolute;inset:0;border-radius:50%;
-  border:1px solid transparent;
-}
-.seal-ring.r1{border-top-color:var(--gold);border-right-color:rgba(200,168,75,.2);animation:spin 1.2s linear infinite;}
-.seal-ring.r2{inset:12px;border-top-color:var(--silver);border-left-color:rgba(168,192,216,.15);animation:spin .75s linear infinite reverse;}
-.seal-ring.r3{inset:22px;border:1px solid rgba(200,168,75,.15);border-radius:50%;}
-.seal-core{
-  position:absolute;inset:30px;border-radius:50%;
-  background:var(--gold-dim);
-  display:grid;place-items:center;
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:12px;color:var(--gold);
-}
-.at-h{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:400;font-size:1.7rem;color:var(--cream);margin-bottom:.4rem;}
-.at-s{font-size:13px;color:var(--mist);line-height:1.7;font-weight:300;}
-.at-dots{display:flex;justify-content:center;gap:6px;margin-top:1.5rem;}
-.at-d{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.2;animation:dotb 1.5s ease infinite;}
-.at-d:nth-child(2){animation-delay:.2s;}
-.at-d:nth-child(3){animation-delay:.4s;}
-
-/* ── RESULT ────────────────────────────────────── */
-#s-result{display:none;animation:fadeUp .55s cubic-bezier(.16,1,.3,1) both;}
-
-/* RESULT HERO */
-.res-hero{
-  border-radius:var(--r2);padding:1.75rem;margin-bottom:10px;
-  background:var(--surface);
-  border:1px solid var(--rim);
-  position:relative;overflow:hidden;
-}
-.res-hero::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 5%,var(--gold) 40%,var(--gold2) 60%,transparent 95%);
-}
-.res-glow{
-  position:absolute;right:-80px;top:-80px;
-  width:250px;height:250px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,168,75,.07),transparent 70%);
-  pointer-events:none;
-}
-.res-tag{
-  font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;
-  display:flex;align-items:center;gap:8px;
-}
-.res-tag::after{content:'';flex:1;height:1px;background:rgba(200,168,75,.2);}
-.res-type{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:600;
-  font-size:clamp(1.9rem,7vw,2.8rem);line-height:1.08;
-  color:var(--cream);margin-bottom:.85rem;letter-spacing:-.005em;
-}
-.res-copy{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:300;
-  font-size:clamp(1rem,3.5vw,1.15rem);color:var(--silver);line-height:1.8;
-}
-
-/* SCORES */
-.scores{
-  background:var(--surface);border:1px solid var(--rim);
-  border-radius:var(--r);padding:1.1rem;margin-bottom:10px;
-}
-.scores-title{
-  font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--mist);margin-bottom:1rem;
-}
-.sc{margin-bottom:13px;}
-.sc:last-child{margin-bottom:0;}
-.sc-top{display:flex;justify-content:space-between;margin-bottom:5px;}
-.sc-n{font-size:12px;font-weight:400;color:var(--silver);letter-spacing:.01em;}
-.sc-v{font-family:'DM Mono','Courier New',monospace;font-size:11px;color:var(--gold2);}
-.sc-rail{height:3px;background:var(--rim);border-radius:2px;overflow:hidden;}
-.sc-bar{height:100%;border-radius:2px;width:0%;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
-.sc-bar.hi{background:linear-gradient(90deg,var(--gold),var(--gold2));}
-.sc-bar.md{background:linear-gradient(90deg,#92400e,#d97706);}
-.sc-bar.lo{background:linear-gradient(90deg,#7f1d1d,#dc2626);}
-
-/* LIVE ACTIVITY */
-.live-bar{
-  display:flex;align-items:center;gap:9px;
-  background:rgba(16,185,129,.04);
-  border:1px solid rgba(16,185,129,.12);
-  border-radius:var(--r);padding:.75rem 1rem;margin-bottom:10px;
-}
-.live-bar .dot-live{background:var(--emerald);box-shadow:0 0 5px var(--emerald);}
-.live-bar-text{font-size:13px;color:rgba(110,231,183,.85);font-weight:300;line-height:1.5;}
-
-/* UNLOCK */
-.unlock{
-  background:var(--surface);border:1px solid var(--rim);
-  border-radius:var(--r);padding:1.15rem;margin-bottom:10px;
-}
-.unlock-h{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;
-  font-size:1.1rem;color:var(--cream);margin-bottom:.3rem;letter-spacing:.01em;
-}
-.unlock-s{font-size:12px;color:var(--mist);line-height:1.65;margin-bottom:.9rem;font-weight:300;}
-.lock-row{
-  display:flex;align-items:flex-start;gap:11px;
-  padding:8px 0;border-top:1px solid var(--rim);
-  font-size:13px;color:var(--silver);line-height:1.6;font-weight:300;
-}
-.lock-ic{
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:16px;
-  color:var(--gold);flex-shrink:0;margin-top:0px;opacity:.7;
-}
-
-/* RESULT CTA */
-.res-cta{margin-top:10px;}
-.btn-claim{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  width:100%;padding:17px;
-  background:linear-gradient(140deg,var(--navy),var(--card2),var(--navy));
-  color:var(--gold2);
-  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;
-  font-size:1.15rem;letter-spacing:.06em;
+/* RESULT - redirect page */
+#s-result{display:none;text-align:center;padding:3rem 0;animation:up .4s ease both;}
+.res-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(145deg,#0e2040,#162a50);
   border:1px solid rgba(200,168,75,.4);
-  border-radius:var(--r);cursor:pointer;text-decoration:none;
-  display:flex;align-items:center;justify-content:center;
+  display:grid;place-items:center;margin:0 auto 1.25rem;
+  font-family:Georgia,serif;font-size:22px;color:#c8a84b;
+  box-shadow:0 0 20px rgba(200,168,75,.15);
+}
+.res-title{font-family:Georgia,serif;font-size:1.6rem;font-weight:400;color:#eef3fc;margin-bottom:.5rem;}
+.res-sub{font-size:14px;color:#5a7090;line-height:1.7;margin-bottom:2rem;}
+
+.btn-tg{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px;
+  background:linear-gradient(145deg,#0e2040,#162a50);
+  color:#c8a84b;font-family:Georgia,serif;font-size:1rem;letter-spacing:.05em;
+  border:1px solid rgba(200,168,75,.4);border-radius:8px;
+  text-decoration:none;
   transition:transform .15s,box-shadow .15s,border-color .2s;
-  box-shadow:0 0 30px rgba(200,168,75,.08);
-  margin-bottom:8px;
+  box-shadow:0 0 30px rgba(200,168,75,.1);margin-bottom:.65rem;
 }
-.btn-claim:hover{
-  transform:translateY(-2px);border-color:rgba(200,168,75,.65);
-  box-shadow:0 0 50px rgba(200,168,75,.18);
-}
-.btn-claim svg{width:17px;height:17px;flex-shrink:0;opacity:.7;}
-.res-meta{
-  text-align:center;font-family:'DM Mono','Courier New',monospace;
-  font-size:10px;color:var(--smoke);margin-bottom:1.25rem;letter-spacing:.08em;text-transform:uppercase;
-}
-.btn-retake{
-  display:block;width:100%;padding:10px;background:transparent;
-  color:var(--smoke);font-size:12px;border:none;cursor:pointer;
-  text-decoration:underline;text-underline-offset:3px;
-  font-family:'DM Mono','Courier New',monospace;letter-spacing:.04em;
-}
-.btn-retake:hover{color:var(--mist);}
+.btn-tg:hover{transform:translateY(-2px);border-color:rgba(200,168,75,.65);box-shadow:0 0 50px rgba(200,168,75,.2);}
+.btn-tg svg{width:17px;height:17px;opacity:.7;flex-shrink:0;}
+.res-meta{font-size:10px;color:#243040;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem;}
+.btn-retake{background:none;border:none;color:#3a5070;font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.btn-retake:hover{color:#5a7090;}
 
-/* ── KEYFRAMES ─────────────────────────────────── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes dotb{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
-@keyframes chipglow{0%,100%{box-shadow:none}60%{box-shadow:0 0 14px rgba(200,168,75,.2)}}
+/* DIVIDER + QUOTE */
+.hr{height:1px;background:linear-gradient(90deg,transparent,rgba(26,48,88,.8),transparent);margin:2rem 0;}
+.quote{font-family:Georgia,serif;font-style:italic;font-size:13px;line-height:1.8;color:#3a5070;margin-bottom:.6rem;}
+.quote::before{content:'\201C';color:#c8a84b;font-size:1.1rem;line-height:0;vertical-align:-.25em;margin-right:2px;}
+.quote-who{font-size:10px;color:#243040;letter-spacing:.08em;text-transform:uppercase;}
 
-/* ── RESPONSIVE ────────────────────────────────── */
-@media(max-width:400px){
-  .hook{font-size:2.6rem;}
-  .stat-n{font-size:1.65rem;}
-  .q-body{font-size:1.4rem;}
-  .res-type{font-size:1.8rem;}
-}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@media(max-width:400px){h1{font-size:2rem;}.q-body{font-size:1.25rem;}}
 </style>
 </head>
 <body>
-<canvas id="stars" aria-hidden="true"></canvas>
-<div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div>
-<div class="noise"></div>
-
 <div class="wrap">
 
-  <!-- NAV -->
-  <nav>
-    <div class="brand">
-      <div class="brand-seal">T</div>
-      <div>
-        <div class="brand-name">Thomas Circle</div>
-        <div class="brand-sub">Private Capital Network</div>
-      </div>
-    </div>
-    <div class="nav-badge"><div class="dot-live"></div>Live</div>
-  </nav>
-
-  <!-- ══ INTRO ══════════════════════════════════ -->
-  <div id="s-intro">
-
-    <div class="mem-row">
-      <div class="mem-avatars">
-        <div class="mem-av">AK</div>
-        <div class="mem-av">RJ</div>
-        <div class="mem-av">ML</div>
-        <div class="mem-av">SN</div>
-        <div class="mem-av" id="mv5" style="background:var(--card2);border-color:var(--rim2);font-size:9px;letter-spacing:-.02em;color:var(--mist);">+<span id="mv5n">4k</span></div>
-      </div>
-      <div class="mem-text"><strong id="mem-count">4,847</strong> traders already inside — <span id="mem-today">38</span> joined today</div>
-    </div>
-
-    <div class="hook-eyebrow">Private Capital Network · Est. 2023</div>
-
-    <h1 class="hook">
-      Most traders fail<br>for <em>one reason.</em><br>
-      <strong>Yours is specific.</strong>
-    </h1>
-
-    <p class="hook-sub">
-      The market isn't your problem. Your patterns are.
-      Answer 6 questions — our AI identifies your exact blind spot and tells you precisely how to fix it.
-    </p>
-
-    <div class="stats" role="list">
-      <div class="stat" role="listitem">
-        <div class="stat-inner">
-          <div class="stat-n" id="s1">4,847+</div>
-          <div class="stat-l">Traders analyzed</div>
-        </div>
-      </div>
-      <div class="stat" role="listitem">
-        <div class="stat-inner">
-          <div class="stat-n">2 min</div>
-          <div class="stat-l">To complete</div>
-        </div>
-      </div>
-      <div class="stat" role="listitem">
-        <div class="stat-inner">
-          <div class="stat-n" id="s3">100%</div>
-          <div class="stat-l">Free forever</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-kicker">What type are you?</div>
-    <div class="chips">
-      <span class="chip lit" style="animation:chipglow 3s ease infinite;">The Revenge Trader</span>
-      <span class="chip">The FOMO Chaser</span>
-      <span class="chip lit" style="animation:chipglow 3s ease infinite 1s;">The Frozen Analyst</span>
-      <span class="chip">The Signal Dependent</span>
-      <span class="chip lit" style="animation:chipglow 3s ease infinite .5s;">The Undisciplined Winner</span>
-      <span class="chip">The Patient Hunter</span>
-    </div>
-
-    <div class="testi">
-      <div class="testi-bg"></div>
-      <p class="testi-q">Took the quiz expecting nothing. The result described 2 years of losses in 4 sentences. Joined Thomas Circle that night. Best decision I've made in crypto.</p>
-      <div class="testi-foot">
-        <div class="testi-av">AK</div>
-        <div>
-          <div class="testi-who">@crypto_ak · Member since Jan 2024</div>
-          <div class="testi-stars">★★★★★</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="urgency">
-      <div class="urgency-dot"></div>
-      <div class="urgency-text">Only <strong><span id="spots">11</span> spots</strong> remaining in Thomas Circle this week — <span id="join-today">38</span> joined in the last 24h</div>
-    </div>
-
-    <button class="btn-enter" onclick="startQuiz()">
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="10" cy="10" r="7"/><path d="M10 7v6M7 10l3 3 3-3"/>
-      </svg>
-      Find My Trader Type — Free
-    </button>
-    <p class="btn-meta">No email · No signup · No spam · Ever</p>
-
-  </div>
-
-  <!-- ══ QUIZ ════════════════════════════════════ -->
-  <div id="s-quiz">
-    <div class="prog-wrap">
-      <div class="prog-row">
-        <span class="prog-label" id="qnum">Question 1 of 6</span>
-        <span class="prog-pct" id="qpct">0%</span>
-      </div>
-      <div class="prog-rail"><div class="prog-bar" id="prog" style="width:0%"></div></div>
-    </div>
-    <div class="q-num" id="q-num">01 / 06</div>
-    <div class="q-body" id="qtext"></div>
-    <div class="opts" id="opts"></div>
-    <button class="btn-next" id="nxt" disabled onclick="nextQ()">Continue</button>
-  </div>
-
-  <!-- ══ ANALYZING ══════════════════════════════ -->
-  <div id="s-analyzing">
-    <div class="seal-anim">
-      <div class="seal-ring r1"></div>
-      <div class="seal-ring r2"></div>
-      <div class="seal-ring r3"></div>
-      <div class="seal-core">TC</div>
-    </div>
-    <div class="at-h" id="at-h">Analyzing Profile</div>
-    <div class="at-s" id="at-s">Cross-referencing 4,800+ trader patterns...</div>
-    <div class="at-dots">
-      <div class="at-d"></div><div class="at-d"></div><div class="at-d"></div>
+<nav>
+  <div class="brand">
+    <div class="seal">T</div>
+    <div>
+      <div class="brand-name">Thomas Circle</div>
+      <div class="brand-sub">Private Capital Network</div>
     </div>
   </div>
+  <div class="pill"><div class="dot"></div>Live</div>
+</nav>
 
-  <!-- ══ RESULT ══════════════════════════════════ -->
-  <div id="s-result">
+<!-- INTRO -->
+<div id="s-intro">
+  <div class="kicker">Free · 2 Minutes · No signup</div>
+  <h1>Most traders fail<br>for <em>one reason.</em><br>Yours is specific.</h1>
+  <p class="sub">The market isn't your problem. Your patterns are. <strong>Answer 6 questions</strong> — find out exactly what's holding you back.</p>
 
-    <div class="res-hero">
-      <div class="res-glow"></div>
-      <div class="res-tag">Your Trader Profile <span style="opacity:.3">——</span></div>
-      <div class="res-type" id="res-type"></div>
-      <div class="res-copy" id="res-copy"></div>
-    </div>
-
-    <div class="scores">
-      <div class="scores-title">Performance Breakdown</div>
-      <div id="sc-bars"></div>
-    </div>
-
-    <div class="live-bar">
-      <div class="dot-live"></div>
-      <div class="live-bar-text" id="act-text">38 members active inside Thomas Circle right now</div>
-    </div>
-
-    <div class="unlock">
-      <div class="unlock-h" id="unlock-h">What's inside Thomas Circle</div>
-      <div class="unlock-s" id="unlock-s">Join free. Get your complete fix plan, live signals, and direct access to Thomas.</div>
-      <div class="lock-row"><span class="lock-ic">◆</span><span id="l1"></span></div>
-      <div class="lock-row"><span class="lock-ic">◆</span><span id="l2"></span></div>
-      <div class="lock-row"><span class="lock-ic">◆</span><span id="l3"></span></div>
-    </div>
-
-    <div class="res-cta">
-      <a class="btn-claim" href="https://bit.ly/PrivateCircle" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.008 9.46c-.15.67-.543.834-1.101.517l-3.038-2.239-1.466 1.41c-.162.162-.298.298-.612.298l.219-3.099 5.645-5.099c.246-.217-.053-.337-.378-.12L7.612 13.72l-2.998-.937c-.652-.204-.664-.652.136-.966l11.703-4.512c.543-.196 1.018.133.109.943z"/>
-        </svg>
-        Claim My Spot Inside — DM Thomas
-      </a>
-      <p class="res-meta">Private Access · Limited Spots · Thomas Replies Personally</p>
-      <button class="btn-retake" onclick="restart()">↩ Retake quiz</button>
-    </div>
-
+  <div class="proof-row">
+    <div class="av">AK</div><div class="av">RJ</div><div class="av">ML</div><div class="av">SN</div><div class="av">+</div>
+    <div class="proof-txt"><strong id="mc">4,847</strong> traders already inside</div>
   </div>
+
+  <div class="urgency">
+    <div class="u-dot"></div>
+    <span>Only <strong id="spots">11</strong> spots left this week</span>
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()">
+    Discover My Trader Type — Free
+  </button>
+  <p class="btn-meta">No email · No signup · No spam</p>
+
+  <div class="hr"></div>
+  <p class="quote">Joined on a whim. The Circle explained 2 years of losses in one conversation. Haven't looked back.</p>
+  <p class="quote-who">@crypto_ak · Member since Jan 2024</p>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz">
+  <div class="prog-wrap">
+    <div class="prog-row">
+      <span class="prog-label" id="qnum">Question 1 of 6</span>
+      <span class="prog-pct" id="qpct">0%</span>
+    </div>
+    <div class="prog-rail"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+  </div>
+  <div class="q-num" id="qidx">01 / 06</div>
+  <div class="q-body" id="qtext"></div>
+  <div class="opts" id="opts"></div>
+  <button class="btn-next" id="nxt" disabled onclick="nextQ()">Continue</button>
+</div>
+
+<!-- RESULT → redirect -->
+<div id="s-result">
+  <div class="res-icon">TC</div>
+  <div class="res-title">You're ready to join.</div>
+  <p class="res-sub">Your profile is complete. DM Thomas directly to claim your spot inside the Circle — he replies personally.</p>
+  <a class="btn-tg" href="https://bit.ly/PrivateCircle" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.008 9.46c-.15.67-.543.834-1.101.517l-3.038-2.239-1.466 1.41c-.162.162-.298.298-.612.298l.219-3.099 5.645-5.099c.246-.217-.053-.337-.378-.12L7.612 13.72l-2.998-.937c-.652-.204-.664-.652.136-.966l11.703-4.512c.543-.196 1.018.133.109.943z"/>
+    </svg>
+    Claim My Spot — DM Thomas Now
+  </a>
+  <p class="res-meta">Private access · Limited spots · Thomas replies personally</p>
+  <button class="btn-retake" onclick="restart()">↩ Retake quiz</button>
+</div>
+
 </div>
 
 <script>
-/* ── STAR FIELD ─────────────────────────── */
-(function(){
-  const cv=document.getElementById('stars');
-  const ctx=cv.getContext('2d');
-  let W,H,stars=[],shooters=[];
-  
-  function resize(){
-    W=cv.width=innerWidth;H=cv.height=innerHeight;
-    stars=[];
-    // More stars, brighter
-    const n=Math.floor(W*H/2800);
-    for(let i=0;i<n;i++){
-      const big=Math.random()<.04; // 4% are big bright stars
-      stars.push({
-        x:Math.random()*W,y:Math.random()*H,
-        r:big?(Math.random()*1.8+1.2):(Math.random()*.9+.2),
-        o:big?(Math.random()*.5+.6):(Math.random()*.55+.2),
-        s:Math.random()*3+1.5,
-        t:Math.random()*Math.PI*2,
-        big,
-        // Color variation: white, ice blue, warm white
-        hue:Math.random()<.3?'210,230,255':Math.random()<.5?'220,240,255':'255,255,240'
-      });
-    }
-  }
-  
-  function spawnShooter(){
-    if(Math.random()<.003){
-      shooters.push({
-        x:Math.random()*W*.7,y:Math.random()*H*.4,
-        vx:Math.random()*4+3,vy:Math.random()*2+1,
-        life:1,decay:Math.random()*.02+.015,
-        trail:[]
-      });
-    }
-  }
-  
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const t=Date.now()/1000;
-    
-    // Draw stars
-    stars.forEach(s=>{
-      const flicker=s.big?
-        (0.7+0.3*Math.sin(t/s.s+s.t)):
-        (0.5+0.5*Math.sin(t/s.s+s.t));
-      const o=s.o*flicker;
-      
-      if(s.big){
-        // Glowing halo for big stars
-        const grd=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*4);
-        grd.addColorStop(0,`rgba(${s.hue},${o})`);
-        grd.addColorStop(.4,`rgba(${s.hue},${o*.3})`);
-        grd.addColorStop(1,`rgba(${s.hue},0)`);
-        ctx.fillStyle=grd;
-        ctx.beginPath();ctx.arc(s.x,s.y,s.r*4,0,Math.PI*2);ctx.fill();
-      }
-      ctx.fillStyle=`rgba(${s.hue},${o})`;
-      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
-    });
-    
-    // Shooting stars
-    spawnShooter();
-    shooters=shooters.filter(sh=>{
-      sh.trail.push({x:sh.x,y:sh.y});
-      if(sh.trail.length>18)sh.trail.shift();
-      sh.x+=sh.vx;sh.y+=sh.vy;sh.life-=sh.decay;
-      if(sh.life<=0||sh.x>W||sh.y>H)return false;
-      // Draw trail
-      sh.trail.forEach((p,i)=>{
-        const a=(i/sh.trail.length)*sh.life*.6;
-        ctx.fillStyle=`rgba(210,230,255,${a})`;
-        const r=(i/sh.trail.length)*1.5;
-        ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();
-      });
-      // Head
-      ctx.fillStyle=`rgba(240,248,255,${sh.life})`;
-      ctx.beginPath();ctx.arc(sh.x,sh.y,1.8,0,Math.PI*2);ctx.fill();
-      return true;
-    });
-    
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize',resize);
-  resize();draw();
-})();
-
-/* ── LIVE NUMBERS ───────────────────────── */
-(function(){
-  function r(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
-  function update(){
-    const traders=4800+r(30,100);
-    const today=r(32,55);
-    const spots=r(9,14);
-    const online=r(140,180);
-    document.getElementById('s1').textContent=traders.toLocaleString();
-    document.getElementById('mem-count').textContent=traders.toLocaleString();
-    document.getElementById('mem-today').textContent=today;
-    document.getElementById('mv5n').textContent=(traders-800>4000?'4k+':'4k');
-    document.getElementById('spots').textContent=spots;
-    document.getElementById('join-today').textContent=today;
-  }
-  update();setInterval(update,15000);
-})();
-
-/* ── QUESTIONS ──────────────────────────── */
 const QS=[
-  {q:"A trade drops -10% immediately after you enter. What actually happens?",
-   o:["Cut it — a small loss beats a big one","Hold — my thesis is still intact","Add more — it's an even better price now","I freeze. I can't decide. I watch it fall."]},
-  {q:"You've had 3 losing trades in a row. Your next move?",
-   o:["Step back and review what went wrong","Open another trade immediately to recover","Increase size — I'm due for a winner","Spiral into self-doubt and trade randomly"]},
-  {q:"A coin pumped 60% and you missed the entry. You:",
-   o:["Accept it — the next setup is coming","Buy anyway, momentum is still there","Hunt the next coin that's about to move","Beat yourself up about it for days"]},
-  {q:"Be completely honest — how do you handle stop losses?",
-   o:["Set before entering, always. Non-negotiable.","Usually, but occasionally I skip it","Rarely — I prefer managing positions manually","Almost never. I average down instead."]},
-  {q:"You're sitting on an 80% profit. What happens?",
-   o:["Take partial, trail stop the rest","Close everything — lock in the gain","Hold for 3x or more — this is the trade","Panic sell early, then watch it keep running"]},
+  {q:"A trade drops -10% right after you enter. What do you actually do?",
+   o:["Cut it — small loss, move on","Hold — my thesis is intact","Add more — better price now","Freeze and watch it fall"]},
+  {q:"You've had 3 losses in a row. Your next move?",
+   o:["Step back, review what went wrong","Open another trade to recover fast","Increase size — I'm due for a win","Spiral into self-doubt"]},
+  {q:"A coin pumped 60% and you missed it. You:",
+   o:["Accept it — next setup will come","Buy anyway, still going up","Hunt the next one about to move","Beat yourself up for days"]},
+  {q:"How honest are you about stop losses?",
+   o:["Always set before entering — no exceptions","Usually, sometimes skip it","Rarely — I manage manually","Almost never — I average down"]},
+  {q:"You're up 80% on a position. What happens?",
+   o:["Take partial, trail stop the rest","Close all — lock the profit","Hold for 3x — this is the trade","Panic sell early, watch it moon"]},
   {q:"Where are you in your trading journey — honestly?",
-   o:["Profitable, but I want to scale faster","Breaking even with no real progress","Wildly inconsistent — big wins, bigger losses","Mostly losing. I need to find what's wrong."]}
+   o:["Profitable but want to scale faster","Breaking even, no real progress","Inconsistent — big wins, bigger losses","Mostly losing — need to find what's wrong"]}
 ];
 
 let cur=0,ans=[];
-const ATS=[
-  ['Analyzing Profile','Scanning your answer patterns...'],
-  ['Identifying Type','Cross-referencing 4,800+ trader profiles...'],
-  ['Building Report','Generating your personalized breakdown...'],
-];
-let atI=0,atT=null;
 
 function show(id){
-  ['s-intro','s-quiz','s-analyzing','s-result'].forEach(s=>{
+  ['s-intro','s-quiz','s-result'].forEach(s=>{
     document.getElementById(s).style.display=s===id?'block':'none';
   });
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function startQuiz(){cur=0;ans=[];show('s-quiz');renderQ();}
+function startQuiz(){cur=0;ans=[];show('s-quiz');render();}
 
-function renderQ(){
+function render(){
   const q=QS[cur];
   const pct=Math.round(cur/QS.length*100);
   document.getElementById('prog').style.width=pct+'%';
   document.getElementById('qnum').textContent=`Question ${cur+1} of ${QS.length}`;
   document.getElementById('qpct').textContent=pct+'%';
-  document.getElementById('q-num').textContent=`0${cur+1} / 0${QS.length}`;
+  document.getElementById('qidx').textContent=`0${cur+1} / 0${QS.length}`;
   document.getElementById('qtext').textContent=q.q;
   const K=['A','B','C','D'];
   const wrap=document.getElementById('opts');
@@ -899,7 +321,7 @@ function renderQ(){
   q.o.forEach((txt,i)=>{
     const b=document.createElement('button');
     b.className='opt'+(ans[cur]===i?' sel':'');
-    b.innerHTML=`<span class="opt-k">${K[i]}</span><span class="opt-text">${txt}</span>`;
+    b.innerHTML=`<span class="opt-k">${K[i]}</span><span class="opt-txt">${txt}</span>`;
     b.onclick=()=>{
       ans[cur]=i;
       document.querySelectorAll('.opt').forEach((x,xi)=>x.classList.toggle('sel',xi===i));
@@ -914,112 +336,26 @@ function renderQ(){
 
 function nextQ(){
   if(ans[cur]===undefined)return;
-  if(cur<QS.length-1){cur++;renderQ();}
-  else analyze();
-}
-
-/* ── API CALL ───────────────────────────── */
-const API_KEY='YOUR_API_KEY_HERE';
-
-async function analyze(){
-  show('s-analyzing');
-  atI=0;updateAt();
-  atT=setInterval(()=>{atI=(atI+1)%ATS.length;updateAt();},1800);
-
-  const summary=QS.map((q,i)=>`Q: ${q.q}\nA: ${q.o[ans[i]]||'skipped'}`).join('\n\n');
-
-  const prompt=`You are a sharp, direct crypto trading psychology expert inside Thomas Circle — an exclusive Private Capital Network. Analyze these quiz answers.
-
-${summary}
-
-Return ONLY valid JSON (no markdown, no backticks):
-{
-  "trader_type": "3-5 word archetype, definite article, capitalized (e.g. The Revenge Trader, The FOMO Chaser, The Frozen Analyst, The Undisciplined Winner, The Patient Hunter, The Signal Dependent, The Overcautious Planner)",
-  "description": "3 razor-sharp sentences. First: name exactly what harmful pattern is playing out right now — be blunt and specific, make them feel completely seen. Second: the precise psychological root cause driving it. Third: what concretely changes when this pattern breaks. Use 'you'. Zero filler. Italic-worthy prose.",
-  "scores": [
-    {"label":"Emotional Control","value":0},
-    {"label":"Risk Discipline","value":0},
-    {"label":"Entry Precision","value":0},
-    {"label":"Profit Management","value":0}
-  ],
-  "lock1": "Highly specific benefit inside Thomas Circle that directly addresses their biggest detected weakness",
-  "lock2": "Second concrete benefit tied to what their answers reveal they actually need",
-  "lock3": "The transformation — what is concretely different for them 30 days from now inside the circle",
-  "unlock_h": "5-6 word punchy headline for what's inside — exclusive, specific, urgent",
-  "unlock_s": "1 tight sentence. Why Thomas Circle is the precise right move for THIS specific person right now. Make it feel personal.",
-  "activity": "Specific believable social proof about Thomas Circle activity in the last few hours — include a real-feeling number"
-}
-
-Score rules — be diagnostic, not random:
-- Base every score on actual answer choices
-- Someone who freezes on losses: Emotional Control 12-28
-- Someone who always sets stops: Risk Discipline 72-86  
-- Someone who chases pumps: Entry Precision 15-35
-- Someone who panic-closes winners: Profit Management 18-40
-- Spread scores realistically — avoid clustering near 50`;
-
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,messages:[{role:'user',content:prompt}]})
-    });
-    const d=await r.json();
-    const raw=d.content.map(i=>i.text||'').join('');
-    const obj=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    clearInterval(atT);
-    renderResult(obj);
+  if(cur<QS.length-1){cur++;render();}
+  else{
+    // Last question — show result screen instantly, no API
+    document.getElementById('prog').style.width='100%';
+    document.getElementById('qpct').textContent='100%';
     show('s-result');
-  }catch(e){
-    clearInterval(atT);
-    document.getElementById('at-h').textContent='Something went wrong';
-    document.getElementById('at-s').textContent='Please refresh and try again.';
-    console.error(e);
   }
 }
 
-function renderResult(obj){
-  document.getElementById('res-type').textContent=obj.trader_type||'';
-  document.getElementById('res-copy').textContent=obj.description||'';
-  document.getElementById('l1').textContent=obj.lock1||'';
-  document.getElementById('l2').textContent=obj.lock2||'';
-  document.getElementById('l3').textContent=obj.lock3||'';
-  document.getElementById('unlock-h').textContent=obj.unlock_h||'Inside Thomas Circle';
-  document.getElementById('unlock-s').textContent=obj.unlock_s||'';
-  document.getElementById('act-text').textContent=obj.activity||'42 members active inside Thomas Circle right now';
-
-  const wrap=document.getElementById('sc-bars');
-  wrap.innerHTML='';
-  (obj.scores||[]).forEach(s=>{
-    const v=Math.max(5,Math.min(94,s.value));
-    const cls=v<42?'lo':v<65?'md':'hi';
-    const id='sfb-'+s.label.replace(/\s/g,'');
-    wrap.innerHTML+=`<div class="sc">
-      <div class="sc-top">
-        <span class="sc-n">${s.label}</span>
-        <span class="sc-v">${v}%</span>
-      </div>
-      <div class="sc-rail"><div class="sc-bar ${cls}" id="${id}"></div></div>
-    </div>`;
-  });
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    (obj.scores||[]).forEach(s=>{
-      const v=Math.max(5,Math.min(94,s.value));
-      const el=document.getElementById('sfb-'+s.label.replace(/\s/g,''));
-      if(el)el.style.width=v+'%';
-    });
-    document.getElementById('prog').style.width='100%';
-    document.getElementById('qpct').textContent='100%';
-  }));
-}
-
-function updateAt(){
-  const[h,s]=ATS[atI];
-  document.getElementById('at-h').textContent=h;
-  document.getElementById('at-s').textContent=s;
-}
-
 function restart(){cur=0;ans=[];show('s-intro');}
+
+// Live numbers
+function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function tick(){
+  const mc=document.getElementById('mc');
+  const sp=document.getElementById('spots');
+  if(mc)mc.textContent=rnd(4820,4900).toLocaleString();
+  if(sp)sp.textContent=rnd(9,14);
+}
+tick();setInterval(tick,15000);
 </script>
 </body>
 </html>
